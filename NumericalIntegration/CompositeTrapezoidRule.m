@@ -4,7 +4,7 @@ function I = CompositeTrapezoidRule (FUNCT, m, a, b)
   %{
     
     FUNCT is a function handle
-    m is the number of subintervals (must be an integer)
+    m is the number of subintervals (must be an integer, put 1 if you want to use it in its single version)
     a is the start of the interval 
     b is the end of the interval
     

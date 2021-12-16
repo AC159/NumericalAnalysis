@@ -29,6 +29,11 @@ function matrix = NewtonDividedDifferencesInterpolation (x, y)
     matrix(i) = v(i,i);
   endfor
 
+  printf("Here are the coefficients f[X1, X2, ..., Xm]\n")
+  for i = 1:n
+    printf("b%d: %f\n", i-1, matrix(i))
+  endfor
+  
 endfunction
 
 
