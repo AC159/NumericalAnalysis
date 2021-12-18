@@ -10,6 +10,7 @@ function I = CompositeTrapezoidRule (FUNCT, m, a, b)
     
   %}
 
+  % Caution when m is not an integer, the integral might not be fully evaluated within the integration limits!
   x_vector = linspace(a, b, m+1);
   h = (b-a)/m;
   I =(h/2)*(2*sum(arrayfun(FUNCT, x_vector)) - FUNCT(a) - FUNCT(b))
