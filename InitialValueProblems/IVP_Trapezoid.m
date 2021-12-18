@@ -1,5 +1,5 @@
 
-function [t,w] = IVP_Trapezoid (f, t0, y0 ,h, n)
+function [t,w] = IVP_Trapezoid (f, t0, y0, h, n)
   
   %{
     Runge-Kutta trapezoid method to solve initial value problems:

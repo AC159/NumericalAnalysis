@@ -14,6 +14,7 @@ function Xi = bisection(FUNC, a, b, TOL)
   error = (b - a) / 2;
   a_i = a;
   b_i = b;
+  Xi = (a_i + b_i) / 2;
   
   while error >= TOL
   

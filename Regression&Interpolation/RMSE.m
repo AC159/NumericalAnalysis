@@ -1,18 +1,20 @@
 
-function rmse = RMSE(A, x, b)
+function [ squaredError, meanSquaredError, rmse ] = RMSE(FUNC, x, y)
 
   % Calculate the root mean squared error of the system of inconsistent equations
   
   %{ 
   
-    Inputs A is the coefficient matrix, x is the solution of the inconsistent
-    system of equations (column vector) and b is the solution vector
+    Inputs 
+    FUNC is a function handle that models the equation we want to fit
+    x is the vector of x-values of the data set
+    y is the vector of y-values of the data set
   
   %}
   
-  r = b - A*x;
-  squaredError = norm(r,2)^2;
-  rmse = sqrt(squaredError / size(x,1));
+  squaredError = sum((y - arrayfun(FUNC, x)).^2);
+  meanSquaredError = squaredError / size(y,1);
+  rmse = sqrt(meanSquaredError);
 
 endfunction
 
@@ -20,14 +22,13 @@ endfunction
 
   USAGE:
   
-  1) Make vectors A, b and x:
+  1) Make a function handle and define the data points x and y
   
-     A = [ 1 -4; 2 3; 2 2; ];
-     b = [ -3; 15; 9 ];
-     Solve for x with PA = LU decomposition:
-     x = A\b;
+     f = @(x) -1 + x;
+     x = [ -1; 2; 3; ];
+     y = [ 3; 2; 1; ];
      
   2) Call the rmse function:
-    RMSE(A, x, b)
+    [ squaredError, meanSquaredError, rmse ] = RMSE(f, x, y)
 
 %}

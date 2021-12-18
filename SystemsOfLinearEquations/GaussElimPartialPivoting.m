@@ -23,6 +23,7 @@ function retval = GaussElimPartialPivoting (A, b)
     % Swap this row with the first one
     if index != i && i != size
       A([i index], :) = A([index i], :);
+      b([i index], :) = b([index i], :);
       pivot = A(i,i);
     endif
     
@@ -32,6 +33,7 @@ function retval = GaussElimPartialPivoting (A, b)
       coefficient = A(j,i) / pivot;
       L(j,i) = coefficient; 
       A(j,:) = A(j,:) - coefficient*A(i,:);
+      b(j,:) = b(j,:) - coefficient*b(i,:);
     endfor
     
     if i != size
@@ -41,6 +43,9 @@ function retval = GaussElimPartialPivoting (A, b)
   
   printf("Upper triangle matrix after Gauss Elimination with partial pivoting: \n")
   A
+  
+  printf("b vector after Gauss Elimination with partial pivoting: \n")
+  b
   
   printf("Lower Triangle matrix with elimination coefficients: \n")
   L

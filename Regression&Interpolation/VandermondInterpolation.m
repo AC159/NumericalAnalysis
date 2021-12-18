@@ -17,6 +17,7 @@ function polynomialCoefficients = VandermondInterpolation (x, y)
   
   % Solve the system of equations
   polynomialCoefficients = vandermondMatrix\y;
+  printf("Polynomial coefficients a0, a1, ..., an\n")
 
 endfunction
 
@@ -31,7 +32,7 @@ endfunction
     
   2) Call the function
   
-    VandermondInterpolation (x, y)
+    VandermondInterpolation(x, y)
     
 %}
 

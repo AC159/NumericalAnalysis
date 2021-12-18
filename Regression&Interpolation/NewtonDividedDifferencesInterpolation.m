@@ -48,7 +48,7 @@ endfunction
     
   2) Call the function
   
-    NewtonDividedDifferencesInterpolation(x, y)
+    NewtonDividedDifferencesInterpolation(x, y);
     
 %}
 

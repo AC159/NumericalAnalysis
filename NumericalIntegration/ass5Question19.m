@@ -1,8 +1,32 @@
 % Assignment 5 question 19
 f = @(x) cos(e^x);
-h2 = pi/10^-5;
-h1 = 2*h2;
-(CompositeTrapezoidRule(f, h2, 0, pi) - CompositeTrapezoidRule(f, h1, 0, pi))/(2^2-1)
+
+m = 1;
+error = [0];
+h = [];
+I = [];
+for i = 1:20
+  I = [I; CompositeTrapezoidRule(f, m, 0, pi)];
+  h = [h; pi/m ];
+  m = m*2;
+endfor
+
+% calculate the richardson error
+for i = 1:size(h,1)
+  
+  if i > 1
+    richardsonError = abs((I(i,1) - I(i-1,1))/(2^2-1));
+    error = [ error; richardsonError ];
+  endif
+  
+endfor
+
+h
+error
+loglog(h, error, 'bo-')
+
+
+
 
 % Assignment 5 question 20
 
